@@ -1,0 +1,82 @@
+def vacuum_world():
+goal_state = {&#39;A&#39;: &#39;0&#39;, &#39;B&#39;: &#39;0&#39;}
+cost = 0
+location_input = input(&quot;Enter Location of Vacuum:&quot;)
+status_input = input(&quot;Enter status of &quot; + location_input+&quot;:&quot;)
+status_input_complement = input(&quot;Enter status of other room:&quot;)
+print(&quot;Initial Location Condition:&quot; + str(goal_state))
+if location_input == &#39;A&#39;:
+print(&quot;Vacuum is placed in Location A&quot;)
+if status_input == &#39;1&#39;:
+print(&quot;Location A is Dirty.&quot;)
+goal_state[&#39;A&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;Cost for CLEANING A &quot; + str(cost))
+print(&quot;Location A has been Cleaned.&quot;)
+if status_input_complement == &#39;1&#39;:
+# if B is Dirty
+print(&quot;Location B is Dirty.&quot;)
+print(&quot;Moving right to the Location B. &quot;)
+cost += 1
+print(&quot;COST for moving RIGHT&quot; + str(cost))
+goal_state[&#39;B&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;COST for SUCK &quot; + str(cost))
+print(&quot;Location B has been Cleaned. &quot;)
+else:
+print(&quot;No action&quot; + str(cost))
+print(&quot;Location B is already clean.&quot;)
+if status_input == &#39;0&#39;:
+print(&quot;Location A is already clean &quot;)
+
+if status_input_complement == &#39;1&#39;:
+print(&quot;Location B is Dirty.&quot;)
+print(&quot;Moving RIGHT to the Location B. &quot;)
+cost += 1
+print(&quot;COST for moving RIGHT &quot; + str(cost))
+goal_state[&#39;B&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;Cost for SUCK&quot; + str(cost))
+print(&quot;Location B has been Cleaned. &quot;)
+else:
+print(&quot;No action &quot; + str(cost))
+print(cost)
+print(&quot;Location B is already clean.&quot;)
+else:
+print(&quot;Vacuum is placed in location B&quot;)
+if status_input == &#39;1&#39;:
+print(&quot;Location B is Dirty.&quot;)
+goal_state[&#39;B&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;COST for CLEANING &quot; + str(cost))
+print(&quot;Location B has been Cleaned.&quot;)
+if status_input_complement == &#39;1&#39;:
+print(&quot;Location A is Dirty.&quot;)
+print(&quot;Moving LEFT to the Location A. &quot;)
+cost += 1
+print(&quot;COST for moving LEFT&quot; + str(cost))
+goal_state[&#39;A&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;COST for SUCK &quot; + str(cost))
+print(&quot;Location A has been Cleaned.&quot;)
+else:
+print(cost)
+print(&quot;Location B is already clean.&quot;)
+if status_input_complement == &#39;1&#39;: # if A is Dirty
+print(&quot;Location A is Dirty.&quot;)
+print(&quot;Moving LEFT to the Location A. &quot;)
+cost += 1
+
+print(&quot;COST for moving LEFT &quot; + str(cost))
+goal_state[&#39;A&#39;] = &#39;0&#39;
+cost += 1
+print(&quot;Cost for SUCK &quot; + str(cost))
+print(&quot;Location A has been Cleaned. &quot;)
+else:
+print(&quot;No action &quot; + str(cost))
+print(&quot;Location A is already clean.&quot;)
+
+print(&quot;GOAL STATE: &quot;)
+print(goal_state)
+print(&quot;Performance Measurement: &quot; + str(cost))
+vacuum_world()
